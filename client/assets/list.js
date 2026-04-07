@@ -1,19 +1,19 @@
 const movieList = document.getElementById("movie-list");
+const movieForm = document.getElementById("movie-form");
+
+movieForm.addEventListener("submit", addMovieCardFromForm)
 
 const movies = ["The Lego Movie", "Star Wars", "Avengers: Endgame", "Howl's Moving Castle", "Project Hail Mary", "Pinocchio"];
 
 async function createMovieList(movieNames) {
-    const container = document.createElement("div");
-    container.classList.add("row","row-cols-1", "row-cols-md-2", "g-4");
     // Now we loop through the movies we need to get
     for (let i = 0; i < movieNames.length; i++){
             let movieInfo = await getMovieInfo(movieNames[i]); // Get the movie name
             console.log(movieInfo);
             let movieCard = createMovieCard(movieInfo);
 
-            container.appendChild(movieCard);
+            movieList.appendChild(movieCard);
     }
-    movieList.appendChild(container);
 }
 
 
@@ -77,7 +77,7 @@ function createMovieCard(data) {
 
 async function getMovieInfo(name) {
     name = name.replaceAll(" ", "+") //Reformat string to be useable with api
-    const resp = await fetch(`http://www.omdbapi.com/?apikey=notforyou&t=${name}`);
+    const resp = await fetch(`http://www.omdbapi.com/?apikey=notforYou&t=${name}`);
     if (resp.ok) {
         const data = await resp.json()
         return data
@@ -87,5 +87,14 @@ async function getMovieInfo(name) {
     }
 }
 
+
+async function addMovieCardFromForm(e) {
+    e.preventDefault();
+    const name = e.target.movieName.value;
+    e.target.movieName.value = "";
+    const data = await getMovieInfo(name);
+    const card = createMovieCard(data);
+    movieList.appendChild(card);
+}
 
 createMovieList(movies);
