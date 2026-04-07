@@ -94,7 +94,7 @@ function checkSecurityAnswer() {
     loginBtn.disabled = true;
 
     setTimeout(() => {
-    window.location.href = 'index.html';
+window.location.href = '../client/index.html';
 }, 1500);
 }
 
