@@ -1,6 +1,6 @@
 const movieList = document.getElementById("movie-list");
 
-const movies = ["The Lego Movie", "Star Wars", "Avengers: Endgame", "Howl's Moving Castle"];
+const movies = ["The Lego Movie", "Star Wars", "Avengers: Endgame", "Howl's Moving Castle", "Project Hail Mary", "Pinocchio"];
 
 async function createMovieList(movieNames) {
     const container = document.createElement("div");
@@ -43,13 +43,19 @@ function createMovieCard(data) {
     const externalRating = document.createElement("p");
     externalRating.classList.add("card-text");
 
-    const rating = data.Ratings[0];
-    externalRating.innerText = `${rating.Source}'s rating was ${rating.Value}`;
+    externalRating.innerText = `IMDB's rating was ${data.imdbRating}/10`;
     cardBody.appendChild(externalRating);
 
     const yourRating = document.createElement("p");
     yourRating.classList.add("card-text");
     yourRating.innerText = `You have not yet rated this movie`;
+    const button = document.createElement("button");
+    button.classList.add("btn", "btn-primary", "m-3");
+    button.type = "button";
+    button.innerText = "Update Rating";
+    yourRating.appendChild(button);
+
+
     cardBody.appendChild(yourRating);
 
     const year = document.createElement("p");
@@ -57,6 +63,7 @@ function createMovieCard(data) {
     year.innerText = `This movie was released in ${data.Year}`;
     cardBody.appendChild(year);
 
+    
     //append everything
 
     cardDiv.appendChild(cardImage);
@@ -70,7 +77,7 @@ function createMovieCard(data) {
 
 async function getMovieInfo(name) {
     name = name.replaceAll(" ", "+") //Reformat string to be useable with api
-    const resp = await fetch(`http://www.omdbapi.com/?apikey=NoKeyForYou&t=${name}`);
+    const resp = await fetch(`http://www.omdbapi.com/?apikey=notforyou&t=${name}`);
     if (resp.ok) {
         const data = await resp.json()
         return data
