@@ -78,10 +78,24 @@
   </div>
 </nav>
 
-    <h1 class="text-center p-2">My movies</h1>
+    <h1 class="text-center p-2">Movie Rater</h1>
 
-    <div id="movie-list" class="mx-3">
+    <h3 class="text-center">Add Movie</h3>
+    
+    <form class="m-3" id="movie-form">
+        <div class="mb-3">
+            <label for="movie-name" class="form-label">Movie name</label>
+            <input type="text" class="form-control" id="movieName" placeholder="e.g. Star Wars">
+        </div>
+        <div class="mb-3">
+            <label for="range3" class="form-label">Input you rating out of five</label>
+            <input type="range" class="form-range" min="0" max="5" step="0.5" id="range3">
+        </div>
+        <button type="submit" class="btn btn-primary ">Submit</button>
+    </form>
 
+    <h3 class="text-center my-2" >Movies watched</h3>
+    <div id="movie-list" class="row row-cols-1 row-cols-md-2 g-4 mx-3">
     </div>
 </body>
 </html>
