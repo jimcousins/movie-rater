@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="auth.css" />
+
+    <title>App Name — Log In</title>
+</head>
+<body>
+
+    <div class="card">
+
+        <div class="logo">
+            <h1>App Name</h1>
+            <p>Welcome back — log in to continue</p>
+        </div>
+
+        <div class="success-banner" id="successBanner"></div>
+
+        <div class="field">
+            <label for="email">Email address</label>
+            <input type="email" id="email" placeholder="jane@example.com"  />
+            <div class="error" id="err-email">Enter a valid email address</div>
+        </div>
+
+        <div class="field">
+            <label for="password">Password</label>
+            <input type="password" id="password" placeholder="Your password" />
+            <div class="error" id="err-pass">Incorrect email or password</div>
+        </div>
+
+        <div id="securitySection">
+            <div class="section-label">Security verification</div>
+            <div class="field">
+                <div class="question-text" id="questionText"></div>
+                <input type="text" id="secAnswer" placeholder="Your answer" />
+                <div class="hint">Not case-sensitive</div>
+                <div class="error" id="err-ans">Incorrect answer — please try again</div>
+            </div>
+        </div>
+
+        <button class="btn" id="loginBtn">Continue</button>
+
+        <div class="switch-link">
+            New to App Name? <a href="signup.html">Create an account</a>
+        </div>
+
+    </div>
+
+    <script src="login.js"></script>
+
+</body>
+</html>

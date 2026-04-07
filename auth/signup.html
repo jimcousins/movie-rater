@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="auth.css" />
+    <title>App Name — Create Account</title>
+</head>
+<body>
+
+    <div class="card">
+
+        <div class="logo">
+            <h1>App Name</h1>
+            <p>Create your account to start rating films</p>
+        </div>
+
+        <div class="success-banner" id="successBanner">
+            Account created! Redirecting to login...
+        </div>
+
+        <div class="field-row">
+            <div class="field">
+                <label for="firstName">First name</label>
+                <input type="text" id="firstName" placeholder="Jane" autocomplete="given-name" />
+                <div class="error" id="err-first">Required</div>
+            </div>
+            <div class="field">
+                <label for="lastName">Last name</label>
+                <input type="text" id="lastName" placeholder="Smith" autocomplete="family-name" />
+                <div class="error" id="err-last">Required</div>
+            </div>
+        </div>
+
+        <div class="field">
+            <label for="email">Email address</label>
+            <input type="email" id="email" placeholder="jane@example.com" autocomplete="email" />
+            <div class="error" id="err-email">Enter a valid email address</div>
+        </div>
+
+        <div class="field">
+            <label for="password">Password</label>
+            <input type="password" id="password" placeholder="Min. 8 characters" autocomplete="new-password" />
+            <div class="error" id="err-pass">At least 8 characters required</div>
+        </div>
+
+        <div class="section-label">Security question</div>
+
+        <div class="field">
+            <label for="secQuestion">Choose a question</label>
+            <select id="secQuestion">
+                <option value="">— Select a question —</option>
+                <option value="1">What was the name of your first pet?</option>
+                <option value="2">Where were you born?</option>
+                <option value="3">What is your all-time favourite film?</option>
+            </select>
+            <div class="error" id="err-q">Please select a question</div>
+        </div>
+
+        <div class="field">
+            <label for="secAnswer">Your answer</label>
+            <input type="text" id="secAnswer" placeholder="Answer (not case-sensitive)" autocomplete="off" />
+            <div class="hint">This will be asked when you log in to verify your identity.</div>
+            <div class="error" id="err-ans">Required</div>
+        </div>
+
+        <button class="btn" id="signupBtn">Create account</button>
+
+        <div class="switch-link">
+            Already have an account? <a href="login.html">Log in</a>
+        </div>
+
+    </div>
+
+    <script src="signup.js"></script>
+
+</body>
+</html>

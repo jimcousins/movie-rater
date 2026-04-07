@@ -1,0 +1,141 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+
+.card {
+    background: white;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    padding: 32px;
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 4px;
+}
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.field-row {
+    display: flex;
+    gap: 12px;
+}
+
+.field-row .field {
+    flex: 1;
+}
+
+label {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+input, select {
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    outline: none;
+}
+
+input:focus, select:focus {
+    border-color: #555;
+}
+
+.hint {
+    font-size: 12px;
+    color: #888;
+}
+
+.section-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #444;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.btn {
+    padding: 10px;
+    background: #111;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: #333;
+}
+
+.btn:disabled {
+    background: #999;
+    cursor: not-allowed;
+}
+
+.error {
+    display: none;
+    font-size: 13px;
+    color:red;
+    padding: 8px 12px;
+    background: #fff0f0;
+    border: 1px solid rgb(168, 21, 21);
+    border-radius: 6px;
+}
+
+.error.show {
+    display: block;
+}
+
+.success-banner {
+    display: none;
+    font-size: 13px;
+    color: green;
+    padding: 8px 12px;
+    background: #f0fdf4;
+    border: 1px solid #2dee71;
+    border-radius: 6px;
+}
+
+.success-banner.show {
+    display: block;
+}
+
+#securitySection {
+    display: none;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.switch-link {
+    font-size: 13px;
+    color: #666;
+    text-align: center;
+}
+
+.switch-link a {
+    color: #111;
+    font-weight: 600;
+}
