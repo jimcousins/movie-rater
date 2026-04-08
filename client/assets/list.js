@@ -53,6 +53,18 @@ function createMovieCard(data) {
     button.classList.add("btn", "btn-primary", "m-3");
     button.type = "button";
     button.innerText = "Update Rating";
+
+    button.addEventListener("click", () => {
+        const newRating = prompt("Enter your new rating (0-10):");
+        if (newRating !== null && !isNaN(newRating) && newRating >= 0 && newRating <= 10) {
+            yourRating.innerText = `Your rating: ${newRating}/10`;
+            yourRating.appendChild(button);
+        } else if (newRating !== null) {
+            alert("Please enter a valid rating between 0 and 10.");
+            yourRating.appendChild(button);
+        }
+    });
+
     yourRating.appendChild(button);
 
 
@@ -62,6 +74,17 @@ function createMovieCard(data) {
     year.classList.add("card-text");
     year.innerText = `This movie was released in ${data.Year}`;
     cardBody.appendChild(year);
+
+    const deleteButton = document.createElement("button");
+    deleteButton.classList.add("btn", "btn-danger", "m-3");
+    deleteButton.type = "button";
+    deleteButton.innerText = "Delete";
+
+    deleteButton.addEventListener("click", () => {
+        column.remove();
+    });
+
+    cardBody.appendChild(deleteButton);
 
     
     //append everything
@@ -98,3 +121,12 @@ async function addMovieCardFromForm(e) {
 }
 
 createMovieList(movies);
+
+ 
+function setTheme(theme) {
+    document.body.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+}
+
+const savedTheme = localStorage.getItem('theme') || '';
+setTheme(savedTheme);

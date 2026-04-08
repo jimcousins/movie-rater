@@ -3,71 +3,72 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="auth.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="auth.css">
+
     <title>App Name — Create Account</title>
 </head>
-<body>
+<body class="bg-light d-flex justify-content-center align-items-center min-vh-100">
 
-    <div class="card">
+    <div class="card p-4 shadow-sm" style="width: 100%; max-width: 420px;">
 
-        <div class="logo">
-            <h1>App Name</h1>
-            <p>Create your account to start rating films</p>
+        <div class="mb-4 text-center">
+            <h1 class="h3">App Name</h1>
+            <p class="text-muted">Create your account to start rating films</p>
         </div>
 
-        <div class="success-banner" id="successBanner">
+        <div class="alert alert-success d-none" id="successBanner">
             Account created! Redirecting to login...
         </div>
 
-        <div class="field-row">
-            <div class="field">
-                <label for="firstName">First name</label>
-                <input type="text" id="firstName" placeholder="Jane" autocomplete="given-name" />
-                <div class="error" id="err-first">Required</div>
+        <div id="signupForm">
+
+            <div class="row mb-3">
+                <div class="col">
+                    <label for="firstName" class="form-label">First name</label>
+                    <input type="text" class="form-control" id="firstName" placeholder="Jane" autocomplete="given-name" />
+                </div>
+                <div class="col">
+                    <label for="lastName" class="form-label">Last name</label>
+                    <input type="text" class="form-control" id="lastName" placeholder="Smith" autocomplete="family-name" />
+                </div>
             </div>
-            <div class="field">
-                <label for="lastName">Last name</label>
-                <input type="text" id="lastName" placeholder="Smith" autocomplete="family-name" />
-                <div class="error" id="err-last">Required</div>
+
+            <div class="mb-3">
+                <label for="email" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="email" placeholder="jane@example.com" autocomplete="email" />
             </div>
-        </div>
 
-        <div class="field">
-            <label for="email">Email address</label>
-            <input type="email" id="email" placeholder="jane@example.com" autocomplete="email" />
-            <div class="error" id="err-email">Enter a valid email address</div>
-        </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" placeholder="Min. 8 characters" autocomplete="new-password" />
+            </div>
 
-        <div class="field">
-            <label for="password">Password</label>
-            <input type="password" id="password" placeholder="Min. 8 characters" autocomplete="new-password" />
-            <div class="error" id="err-pass">At least 8 characters required</div>
-        </div>
+            <p class="fw-semibold text-muted small text-uppercase">Security question</p>
 
-        <div class="section-label">Security question</div>
+            <div class="mb-3">
+                <label for="secQuestion" class="form-label">Choose a question</label>
+                <select class="form-select" id="secQuestion">
+                    <option value="">— Select a question —</option>
+                    <option value="1">What was the name of your first pet?</option>
+                    <option value="2">Where were you born?</option>
+                    <option value="3">What is your all-time favourite film?</option>
+                </select>
+            </div>
 
-        <div class="field">
-            <label for="secQuestion">Choose a question</label>
-            <select id="secQuestion">
-                <option value="">— Select a question —</option>
-                <option value="1">What was the name of your first pet?</option>
-                <option value="2">Where were you born?</option>
-                <option value="3">What is your all-time favourite film?</option>
-            </select>
-            <div class="error" id="err-q">Please select a question</div>
-        </div>
+            <div class="mb-4">
+                <label for="secAnswer" class="form-label">Your answer</label>
+                <input type="text" class="form-control" id="secAnswer" placeholder="Answer (not case-sensitive)" autocomplete="off" />
+                <div class="form-text">This will be asked when you log in to verify your identity.</div>
+            </div>
 
-        <div class="field">
-            <label for="secAnswer">Your answer</label>
-            <input type="text" id="secAnswer" placeholder="Answer (not case-sensitive)" autocomplete="off" />
-            <div class="hint">This will be asked when you log in to verify your identity.</div>
-            <div class="error" id="err-ans">Required</div>
-        </div>
+            <button class="btn btn-dark w-100 mb-3" id="signupBtn">Create account</button>
 
-        <button class="btn" id="signupBtn">Create account</button>
+            <p class="text-center text-muted small">
+                Already have an account? <a href="login.html">Log in</a>
+            </p>
 
-        <div class="switch-link">
-            Already have an account? <a href="login.html">Log in</a>
         </div>
 
     </div>

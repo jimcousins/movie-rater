@@ -11,65 +11,46 @@
     <title>My film list</title>
 </head>
 <body>
-    <!-- <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">Navbar</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Dropdown
-                </a>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                </ul>
-                </li>
-            </ul>
-            <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-                <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
-            </div>
-        </div>
-    </nav> -->
+
 <nav class="navbar navbar-expand-lg custom-navbar px-4">
   <div class="container-fluid">
 
-    <!-- LEFT: Logo + Links -->
+    <!-- LEFT: Logo + Nav links -->
     <div class="d-flex align-items-center gap-4">
-
-      <!-- Logo -->
       <i class="bi bi-camera-reels-fill logo-icon"></i>
 
-      <!-- Nav Links -->
       <div class="nav-links d-flex gap-3">
-        <a href="index.html" class="nav-link-custom active">Home</a>
-        <a href="list.html" class="nav-link-custom">My Movies</a>
-        <a href="" class="nav-link-custom">Add Movie</a>
+        <a href="index.html" class="nav-link-custom">Home</a>
+        <a href="list.html" class="nav-link-custom active">My Movies</a>
+        <a href="add.html" class="nav-link-custom">Add Movie</a>
       </div>
-
     </div>
 
-    <!-- RIGHT: Search + Account -->
+    <!-- RIGHT: Search + Theme + Account -->
     <div class="d-flex align-items-center gap-3 ms-auto">
 
-      <input 
-        type="text" 
-        class="form-control search-bar" 
+      <!-- <input
+        type="text"
+        class="form-control search-bar"
+      > -->
+      <!-- <input
+        type="text"
+        class="form-control search-bar"
         placeholder="Search for a movie..."
-      >
+      > -->
+
+      <!-- Theme dropdown -->
+      <div class="dropdown">
+        <button class="btn account-btn dropdown-toggle" type="button" data-bs-toggle="dropdown">
+          Theme 
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end">
+          <li><button class="dropdown-item" onclick="setTheme('light')">Light</button></li>
+          <li><button class="dropdown-item" onclick="setTheme('dark')">Dark</button></li>
+          <li><button class="dropdown-item" onclick="setTheme('orange')">Orange</button></li>
+          <li><button class="dropdown-item" onclick="setTheme('pink')">Pink</button></li>
+        </ul>
+      </div>
 
       <button class="btn account-btn">Account</button>
 
@@ -81,21 +62,22 @@
     <h1 class="text-center p-2">Movie Rater</h1>
 
     <h3 class="text-center">Add Movie</h3>
-    
+
     <form class="m-3" id="movie-form">
         <div class="mb-3">
-            <label for="movie-name" class="form-label">Movie name</label>
+            <label for="movieName" class="form-label">Movie name</label>
             <input type="text" class="form-control" id="movieName" placeholder="e.g. Star Wars">
         </div>
         <div class="mb-3">
-            <label for="range3" class="form-label">Input you rating out of five</label>
-            <input type="range" class="form-range" min="0" max="5" step="0.5" id="range3">
+            <label for="movieRating" class="form-label">Your rating out of 10</label>
+            <input type="number" class="form-control" id="movieRating" min="0" max="10" step="0.5" placeholder="e.g. 8.5">
         </div>
-        <button type="submit" class="btn btn-primary ">Submit</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 
-    <h3 class="text-center my-2" >Movies watched</h3>
-    <div id="movie-list" class="row row-cols-1 row-cols-md-2 g-4 mx-3">
+    <h3 class="text-center my-2">Movies watched</h3>
+    <div id="movie-list" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 px-3">
     </div>
+
 </body>
 </html>
