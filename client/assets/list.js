@@ -89,8 +89,8 @@ function createMovieCard(data, userRating = null) {
 // ─── Fetch movie info from OMDB ───────────────────────────────────────────────
 
 async function getMovieInfo(name) {
-    name = name.replaceAll(" ", "+");
-    const resp = await fetch(`http://www.omdbapi.com/?apikey=a0692506&t=${name}`);
+    name = name.replaceAll(" ", "+") //Reformat string to be useable with api
+    const resp = await fetch(`http://www.omdbapi.com/?apikey=notforyou&t=${name}`);
     if (resp.ok) {
         return await resp.json();
     } else {
