@@ -77,7 +77,7 @@ function createMovieCard(data) {
 
 async function getMovieInfo(name) {
     name = name.replaceAll(" ", "+") //Reformat string to be useable with api
-    const resp = await fetch(`http://www.omdbapi.com/?apikey=a0692506&t=${name}`);
+    const resp = await fetch(`http://www.omdbapi.com/?apikey=notforyou&t=${name}`);
     if (resp.ok) {
         const data = await resp.json()
         return data
