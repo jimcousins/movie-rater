@@ -98,6 +98,7 @@ async function addMovieCardFromForm(e) {
 }
 
 createMovieList(movies);
+
  
 function setTheme(theme) {
     document.body.setAttribute('data-theme', theme);
