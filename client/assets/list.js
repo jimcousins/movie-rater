@@ -98,3 +98,12 @@ async function addMovieCardFromForm(e) {
 }
 
 createMovieList(movies);
+
+ 
+function setTheme(theme) {
+    document.body.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+}
+
+const savedTheme = localStorage.getItem('theme') || '';
+setTheme(savedTheme);

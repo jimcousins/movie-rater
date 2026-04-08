@@ -3,47 +3,50 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="auth.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="auth.css">
 
     <title>App Name — Log In</title>
 </head>
-<body>
+<body class="bg-light d-flex justify-content-center align-items-center min-vh-100">
 
-    <div class="card">
+    <div class="card p-4 shadow-sm" style="width: 100%; max-width: 420px;">
 
-        <div class="logo">
-            <h1>App Name</h1>
-            <p>Welcome back — log in to continue</p>
+        <div class="mb-4 text-center">
+            <h1 class="h3">App Name</h1>
+            <p class="text-muted">Welcome back — log in to continue</p>
         </div>
 
-        <div class="success-banner" id="successBanner"></div>
+        <div class="alert alert-success d-none" id="successBanner"></div>
 
-        <div class="field">
-            <label for="email">Email address</label>
-            <input type="email" id="email" placeholder="jane@example.com"  />
-            <div class="error" id="err-email">Enter a valid email address</div>
-        </div>
+        <div id="loginForm">
 
-        <div class="field">
-            <label for="password">Password</label>
-            <input type="password" id="password" placeholder="Your password" />
-            <div class="error" id="err-pass">Incorrect email or password</div>
-        </div>
-
-        <div id="securitySection">
-            <div class="section-label">Security verification</div>
-            <div class="field">
-                <div class="question-text" id="questionText"></div>
-                <input type="text" id="secAnswer" placeholder="Your answer" />
-                <div class="hint">Not case-sensitive</div>
-                <div class="error" id="err-ans">Incorrect answer — please try again</div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="email" placeholder="jane@example.com" />
             </div>
-        </div>
 
-        <button class="btn" id="loginBtn">Continue</button>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" placeholder="Your password" />
+            </div>
 
-        <div class="switch-link">
-            New to App Name? <a href="signup.html">Create an account</a>
+            <div id="securitySection" class="d-none mb-3">
+                <p class="fw-semibold text-muted small text-uppercase">Security verification</p>
+                <div class="mb-3">
+                    <p id="questionText" class="mb-2"></p>
+                    <input type="text" class="form-control" id="secAnswer" placeholder="Your answer" />
+                    <div class="form-text">Not case-sensitive</div>
+                </div>
+            </div>
+
+            <button class="btn btn-dark w-100 mb-3" id="loginBtn">Continue</button>
+
+            <p class="text-center text-muted small">
+                New to App Name? <a href="signup.html">Create an account</a>
+            </p>
+
         </div>
 
     </div>
