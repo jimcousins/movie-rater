@@ -13,17 +13,9 @@ app = Flask(__name__)
 CORS(app)
 api = Api(app)
 
-@app.route('/')
-def index():
-    return jsonify({'info': 'welcome',
-                       'email': 'alice@outlook.com'})
-
-
-
 api.add_resource(Review_List, "/review/list")
 api.add_resource(Review_Controller, "/review/delete/<int:id>")
 api.add_resource(Create_Review, "/review/create")
-
 api.add_resource(Chatbot, "/chatbot")
 
 
