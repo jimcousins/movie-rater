@@ -3,7 +3,14 @@ const movieForm = document.getElementById("movie-form");
 
 movieForm.addEventListener("submit", addMovieCardFromForm);
 
-const movies = ["Blinding Lights", "Shape of You", "Levitating", "Bad Guy", "One Dance", "Stay"];
+const movies = [
+    "Blinding Lights",
+    "As It Was",
+    "Levitating",
+    "One Dance",
+    "Titanium",
+    "Sunflower"
+];
 
 
 // ─── Movie list ───────────────────────────────────────────────────────────────
@@ -22,27 +29,33 @@ async function createMovieList(movieNames) {
 function createMovieCard(data, userRating = null) {
     const column  = document.createElement("div");
     column.classList.add("col");
+
     const cardDiv = document.createElement("div");
     cardDiv.classList.add("card");
 
     const cardImage = document.createElement("img");
     cardImage.classList.add("card-img-top");
-    cardImage.src = data.Poster;
+    cardImage.src = data.artworkUrl100 || "";
+    cardImage.alt = data.trackName || "Song artwork";
 
     const cardBody = document.createElement("div");
     cardBody.classList.add("card-body");
 
     const cardTitle = document.createElement("h5");
     cardTitle.classList.add("card-title");
-    cardTitle.innerText = data.Title;
+    cardTitle.innerText = data.trackName || "Unknown Song";
     cardBody.appendChild(cardTitle);
+
+    const artist = document.createElement("p");
+    artist.classList.add("card-text");
+    artist.innerText = `Artist: ${data.artistName || "Unknown Artist"}`;
+    cardBody.appendChild(artist);
 
     const externalRating = document.createElement("p");
     externalRating.classList.add("card-text");
-    externalRating.innerText = `External rating: ${data.imdbRating}/10`;
+    externalRating.innerText = `Genre: ${data.primaryGenreName || "Unknown Genre"}`;
     cardBody.appendChild(externalRating);
 
-    // Your rating text
     const yourRating = document.createElement("p");
     yourRating.classList.add("card-text");
     yourRating.innerText = userRating
@@ -50,7 +63,6 @@ function createMovieCard(data, userRating = null) {
         : `You have not yet rated this song`;
     cardBody.appendChild(yourRating);
 
-    // Update rating button
     const updateButton = document.createElement("button");
     updateButton.classList.add("btn", "btn-primary", "m-1");
     updateButton.type = "button";
@@ -65,12 +77,11 @@ function createMovieCard(data, userRating = null) {
     });
     cardBody.appendChild(updateButton);
 
-    const year = document.createElement("p");
-    year.classList.add("card-text");
-    year.innerText = `Released: ${data.Year}`;
-    cardBody.appendChild(year);
+    const release = document.createElement("p");
+    release.classList.add("card-text");
+    release.innerText = `Released: ${data.releaseDate ? data.releaseDate.slice(0, 4) : "Unknown"}`;
+    cardBody.appendChild(release);
 
-    // Delete button
     const deleteButton = document.createElement("button");
     deleteButton.classList.add("btn", "btn-danger", "m-1");
     deleteButton.type = "button";
@@ -89,12 +100,20 @@ function createMovieCard(data, userRating = null) {
 // ─── Fetch movie info from OMDB ───────────────────────────────────────────────
 
 async function getMovieInfo(name) {
-    name = name.replaceAll(" ", "+") //Reformat string to be useable with api
-    const resp = await fetch(`http://www.omdbapi.com/?apikey=notforyou&t=${name}`);
+    name = encodeURIComponent(name);
+    const resp = await fetch(`https://itunes.apple.com/search?term=${name}&media=music&entity=musicTrack&limit=1`);
+
     if (resp.ok) {
-        return await resp.json();
+        const data = await resp.json();
+        console.log(data);
+
+        if (data.results.length > 0) {
+            return data.results[0];
+        } else {
+            return { error: "No song found" };
+        }
     } else {
-        return { error: "Could not speak to the omdbapi" };
+        return { error: "Could not speak to the Apple API" };
     }
 }
 
