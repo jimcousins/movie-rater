@@ -3,7 +3,7 @@ const movieForm = document.getElementById("movie-form");
 
 movieForm.addEventListener("submit", addMovieCardFromForm);
 
-const movies = ["The Lego Movie", "Star Wars", "Avengers: Endgame", "Howl's Moving Castle", "Project Hail Mary", "Pinocchio"];
+const movies = ["Blinding Lights", "Shape of You", "Levitating", "Bad Guy", "One Dance", "Stay"];
 
 
 // ─── Movie list ───────────────────────────────────────────────────────────────
@@ -39,7 +39,7 @@ function createMovieCard(data, userRating = null) {
 
     const externalRating = document.createElement("p");
     externalRating.classList.add("card-text");
-    externalRating.innerText = `IMDB's rating: ${data.imdbRating}/10`;
+    externalRating.innerText = `External rating: ${data.imdbRating}/10`;
     cardBody.appendChild(externalRating);
 
     // Your rating text
@@ -47,7 +47,7 @@ function createMovieCard(data, userRating = null) {
     yourRating.classList.add("card-text");
     yourRating.innerText = userRating
         ? `Your rating: ${userRating}/10`
-        : `You have not yet rated this movie`;
+        : `You have not yet rated this song`;
     cardBody.appendChild(yourRating);
 
     // Update rating button
@@ -129,3 +129,27 @@ setTheme(savedTheme);
 // ─── Init ─────────────────────────────────────────────────────────────────────
 
 createMovieList(movies);
+
+// ─── AI (frontend placeholder) ───────────────────────────────────────────────
+
+function getAIResponse(input) {
+    input = input.toLowerCase();
+
+    if (input.includes("chill")) return "🎶 Try: Ocean Eyes - Billie Eilish";
+    if (input.includes("gym")) return "🔥 Try: POWER - Kanye West";
+    if (input.includes("sad")) return "💔 Try: Someone Like You - Adele";
+
+    return "🎧 Try: Blinding Lights - The Weeknd";
+}
+
+function handleChat() {
+    const input = document.getElementById("chat-input").value;
+    const responseEl = document.getElementById("chat-response");
+
+    responseEl.innerText = "Thinking...";
+
+    setTimeout(() => {
+        const response = getAIResponse(input);
+        responseEl.innerText = response;
+    }, 500);
+}
