@@ -63,6 +63,9 @@ body {
     padding: 14px 0;
     border-bottom: 1px solid var(--border);
     transition: background-color 0.3s ease;
+  height: 80px;
+
+
 }
 
 .logo-icon {
@@ -89,6 +92,15 @@ body {
     background-color: var(--accent);
     color: var(--btn-text);
 }
+.navbar-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 
 
 /* ─── Search bar ──────────────────────────────────────────────────────────── */
@@ -318,4 +330,29 @@ p, label, small { color: var(--text); }
 
 #movie-list .btn {
   margin: 0.4rem;
+}
+
+
+/* TEXT LOGO MIDDLE */
+/* Default (light theme) */
+.brand-text{
+  height: 50px;
+  width: auto;
+}
+
+/* Light backgrounds → dark logo */
+[data-theme="light"] .brand-text,
+[data-theme="orange"] .brand-text,
+[data-theme="pink"] .brand-text {
+  filter: invert(0) sepia(0) grayscale(0) brightness(100%);
+}
+
+/* Dark theme → normal */
+[data-theme="dark"] .brand-text {
+  filter: none;
+}
+
+.logo-img {
+  height: 90px;
+  width: auto;
 }
