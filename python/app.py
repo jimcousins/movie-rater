@@ -1,5 +1,7 @@
 
 # Import requirements
+import sys
+sys.path.append("../")
 from flask import Flask, jsonify
 from flask_restful import Api
 from controller.Review_Controller import Review_Controller
@@ -16,6 +18,7 @@ api = Api(app)
 api.add_resource(Review_List, "/review/list")
 api.add_resource(Review_Controller, "/review/delete/<int:id>")
 api.add_resource(Create_Review, "/review/create")
+
 api.add_resource(Chatbot, "/chatbot")
 
 
