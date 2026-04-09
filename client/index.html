@@ -16,42 +16,39 @@
 
 <!-- NAVBAR  -->
 <nav class="navbar navbar-expand-lg custom-navbar px-4">
-  <div class="container-fluid">
+  <div class="container-fluid d-flex align-items-center justify-content-between">
 
+    <!-- LEFT -->
     <div class="d-flex align-items-center gap-4">
-      <i class="bi bi-music-note-beamed logo-icon"></i>
+      <img src="./assets/images/HearHearLogo.png" class="logo-img"  alt="HearHear logo">
 
       <div class="nav-links d-flex gap-3">
-        <a href="index.html" class="nav-link-custom active">Home</a>
-        <a href="list.html" class="nav-link-custom">My Songs</a>
+        <a href="index.html" class="nav-link-custom">Home</a>
+        <a href="list.html" class="nav-link-custom active">My Songs</a>
         <a href="add.html" class="nav-link-custom">Add Song</a>
       </div>
     </div>
 
-    <!-- RIGHT: Search + Theme + Account -->
-    <div class="d-flex align-items-center gap-3 ms-auto">
+    <!-- CENTER (NEW) -->
+    <div class="navbar-center">
+      <img src="https://hearhear.amsterdam/assets/img/hearhear_LOGO.svg?v2" class="brand-text" width="90px" alt="HearHear">
+    </div>
 
-      <!-- <input
-        type="text"
-        class="form-control search-bar"
-        placeholder="Search for a movie..."
-      > -->
-
-      <!-- Theme dropdown -->
+    <!-- RIGHT -->
+    <div class="d-flex align-items-center gap-3">
       <div class="dropdown">
         <button class="btn account-btn dropdown-toggle" type="button" data-bs-toggle="dropdown">
-          Theme
+          Theme 
         </button>
         <ul class="dropdown-menu dropdown-menu-end">
           <li><button class="dropdown-item" onclick="setTheme('light')">Light</button></li>
-          <li><button class="dropdown-item" onclick="setTheme('dark')">Blue</button></li>
+          <li><button class="dropdown-item" onclick="setTheme('dark')">Dark</button></li>
           <li><button class="dropdown-item" onclick="setTheme('orange')">Orange</button></li>
           <li><button class="dropdown-item" onclick="setTheme('pink')">Pink</button></li>
         </ul>
       </div>
 
       <button class="btn account-btn">Account</button>
-
     </div>
 
   </div>
