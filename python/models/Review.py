@@ -1,42 +1,33 @@
-from db.connect import cur
-# import psycopg2
-# from dotenv import load_dotenv
-# import os
-
-# load_dotenv()
-
-# DATABASE = os.getenv("DATABASE")
-# USER = os.getenv("USER")
-# PASSWORD = os.getenv("PASSWORD")
-# HOST = os.getenv("HOST")
-# PORT = os.getenv("PORT")
-
-# conn = psycopg2.connect(database=DATABASE, user=USER, password=PASSWORD, host=HOST, port=PORT)
-
-# cur = conn.cursor()
+from models.db.connect import cur, conn
 
 class Review:
 
-    def __init__(self, id, rating, movie_name, user_id):
+    def __init__(self, id, rating, song_name, artist):
         self.id = id
         self.rating = rating
-        self.movie_name = movie_name
-        self.user_id = user_id
+        self.song_name = song_name
+        self.artist = artist
 
-    def get_all_by_user_id(user_id):
-        cur.execute("SELECT * FROM review WHERE user_id = %s", [user_id])
+    def to_dict(self):
+        return {"id": self.id, "rating":self.rating, "song_name": self.song_name, "artist": self.artist}
+
+    def get_all():
+        cur.execute("SELECT * FROM review")
         revs = cur.fetchall()
-        reviews = [Review(id=rev[0], rating=rev[1], movie_name=[2], user_id=[3]) for rev in revs]
+        reviews = [Review(id=rev[0], rating=rev[1], song_name=rev[2], artist=rev[3]) for rev in revs]
+        conn.commit()
         return reviews
 
-    def create_review(rating, movie_name, user_id):
-        cur.execute("INSERT INTO review (rating, movie_name, user_id) VALUES (%s, %s, %s) RETURNING *", [rating, movie_name, user_id])
+    def create_review(rating, song_name, artist):
+        cur.execute("INSERT INTO review (rating, song_name, artist) VALUES (%s, %s, %s) RETURNING *", [rating, song_name, artist])
         rev = cur.fetchall()[0]
-        return Review(id=rev[0], rating=rev[1], movie_name=[2], user_id=[3])
+        conn.commit()
+        return Review(id=rev[0], rating=rev[1], song_name=rev[2], artist=rev[3])
 
     def delete_review(id):
         cur.execute("DELETE FROM review WHERE id = %s RETURNING *", [id])
         rev = cur.fetchall()[0]
-        return Review(id=rev[0], rating=rev[1], movie_name=[2], user_id=[3])
+        conn.commit()
+        return Review(id=rev[0], rating=rev[1], song_name=rev[2], artist=rev[3])
     
 
