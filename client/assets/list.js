@@ -151,24 +151,28 @@ createMovieList(movies);
 
 // ─── AI (frontend placeholder) ───────────────────────────────────────────────
 
-function getAIResponse(input) {
-    input = input.toLowerCase();
+async function getAIResponse(input) {
+    resp = await fetch("https://localhost:5000/chatbot", {
+        method: "POST",
+        body: { prompt: input }
+    })
 
-    if (input.includes("chill")) return "🎶 Try: Ocean Eyes - Billie Eilish";
-    if (input.includes("gym")) return "🔥 Try: POWER - Kanye West";
-    if (input.includes("sad")) return "💔 Try: Someone Like You - Adele";
+    if (resp.ok){
+        text = await resp.json()
+        return text
+    } else{
+        return "error speaking to chatbot"
+    }
+    
 
-    return "🎧 Try: Blinding Lights - The Weeknd";
 }
 
-function handleChat() {
+async function handleChat() {
     const input = document.getElementById("chat-input").value;
     const responseEl = document.getElementById("chat-response");
 
     responseEl.innerText = "Thinking...";
 
-    setTimeout(() => {
-        const response = getAIResponse(input);
-        responseEl.innerText = response;
-    }, 500);
+    const response = await getAIResponse(input);
+    responseEl.innerText = response;
 }
