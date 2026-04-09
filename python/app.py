@@ -1,7 +1,5 @@
 
 # Import requirements
-import sys
-sys.path.append("../")
 from flask import Flask, jsonify
 from flask_restful import Api
 from controller.Review_Controller import Review_Controller
